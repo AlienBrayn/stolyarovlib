@@ -6,13 +6,16 @@ class Log extends core\LogAbstract implements core\LogInterface
 	{
 		public static function log($str)
         {
-            if(file_exists(__DIR__."/../../../Log")){
-                if (file_put_contents(__DIR__."/../../../log".date("Y-m-d H:i:s:v").".log",date(DATE_COOKIE)." | ".$str."\r\n"))
+            if(file_exists(__DIR__."/log")){
+            $date=new \datetime();
+            $date = $date ->format("Y-m-d-H_i_s_v");
+            $dir=__DIR__."/log/log_$date.txt";
+                if (file_put_contents($dir,date(DATE_COOKIE)." | ".$str."\r\n"))
                     self::Instance()->log[]=$str;
                 else throw new StolyarovException("Error adding message");
             }
             else {
-                mkdir(__DIR__."/../../../Log/");
+                mkdir(__DIR__."/log");
                 self::log($str);
             }
 		}

@@ -20,7 +20,7 @@ class QuadraticEq extends LinearEq implements core\EquationInterface
 		{
 			$x = array();
 			if ($a==0) {
-				parent::solvel($b,$c,$a);
+				$x = parent::solvel($b,$c);
 			}
 			else if (is_object($e=$this->discr($a,$b,$c)))
             {
@@ -28,8 +28,8 @@ class QuadraticEq extends LinearEq implements core\EquationInterface
             }
 			else if ($this->discr($a,$b,$c)==0) 
 			{
-				$x[]=($b*-1)/(2*$a);
-                Log::log("Quadratic equation ({$a}x^2+{$b}x+{$c}) root:{$x[0]}");
+				$x=($b*-1)/(2*$a);
+                Log::log("Quadratic equation ({$a}x^2+{$b}x+{$c}) root:{$x}");
 			}
 			else 
 			{

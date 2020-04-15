@@ -7,7 +7,7 @@ class LinearEq
      */
     protected $x;
 
-    function solvel($a, $b, $c)
+    function solvel($a, $b)
 		{
 			//aX+b=0
 			//x=-b/a
